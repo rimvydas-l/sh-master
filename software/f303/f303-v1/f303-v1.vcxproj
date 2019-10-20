@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|VisualGDB">
+      <Configuration>Debug</Configuration>
+      <Platform>VisualGDB</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|VisualGDB">
+      <Configuration>Release</Configuration>
+      <Platform>VisualGDB</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{A5BDC5BA-FD28-40A1-BB24-34DEBB90DBD7}</ProjectGuid>
+    <BSP_ID>com.sysprogs.arm.stm32</BSP_ID>
+    <BSP_VERSION>2019.06</BSP_VERSION>
+    <InPlaceBSPSubdir />
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <MCUPropertyListFile>$(ProjectDir)stm32.props</MCUPropertyListFile>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+    <MCUPropertyListFile>$(ProjectDir)stm32.props</MCUPropertyListFile>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <GNUConfigurationType>Debug</GNUConfigurationType>
+    <ToolchainID>com.visualgdb.arm-eabi</ToolchainID>
+    <ToolchainVersion>7.2.0/8.0.1/r3</ToolchainVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+    <ToolchainID>com.visualgdb.arm-eabi</ToolchainID>
+    <ToolchainVersion>7.2.0/8.0.1/r3</ToolchainVersion>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>Inc;..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_F3_V1.10.0\Drivers\CMSIS\Include;..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_F3_V1.10.0\Drivers\CMSIS\Device\ST\STM32F3xx\Include;..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_F3_V1.10.0\Drivers\STM32F3xx_HAL_Driver\Inc;..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_F3_V1.10.0\Drivers\STM32F3xx_HAL_Driver\Inc\Legacy;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>flash_layout;STM32F303xE;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions />
+      <CLanguageStandard />
+      <CPPLanguageStandard />
+    </ClCompile>
+    <Link>
+      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <AdditionalOptions />
+      <LinkerScript />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>Inc;..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_F3_V1.10.0\Drivers\CMSIS\Include;..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_F3_V1.10.0\Drivers\CMSIS\Device\ST\STM32F3xx\Include;..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_F3_V1.10.0\Drivers\STM32F3xx_HAL_Driver\Inc;..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_F3_V1.10.0\Drivers\STM32F3xx_HAL_Driver\Inc\Legacy;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>flash_layout;STM32F303xE;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions />
+      <CLanguageStandard />
+      <CPPLanguageStandard />
+    </ClCompile>
+    <Link>
+      <LibrarySearchDirectories>%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <AdditionalOptions />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ItemGroup>
+    <ClCompile Include="Src\gpio.c" />
+    <ClCompile Include="Src\i2c.c" />
+    <ClCompile Include="Src\ssd1306.c" />
+    <ClCompile Include="Src\ssd1306_fonts.c" />
+    <ClCompile Include="Src\usart.c" />
+    <ClCompile Include="Src\stm32f3xx_it.c" />
+    <ClCompile Include="Src\stm32f3xx_hal_msp.c" />
+    <ClCompile Include="Src\main.c" />
+    <ClCompile Include="..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_F3_V1.10.0\Drivers\CMSIS\Device\ST\STM32F3xx\Source\Templates\system_stm32f3xx.c" />
+    <ClCompile Include="..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_F3_V1.10.0\Drivers\STM32F3xx_HAL_Driver\Src\stm32f3xx_hal.c" />
+    <ClCompile Include="..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_F3_V1.10.0\Drivers\STM32F3xx_HAL_Driver\Src\stm32f3xx_hal_rcc.c" />
+    <ClCompile Include="..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_F3_V1.10.0\Drivers\STM32F3xx_HAL_Driver\Src\stm32f3xx_hal_rcc_ex.c" />
+    <ClCompile Include="..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_F3_V1.10.0\Drivers\STM32F3xx_HAL_Driver\Src\stm32f3xx_hal_cortex.c" />
+    <ClCompile Include="..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_F3_V1.10.0\Drivers\STM32F3xx_HAL_Driver\Src\stm32f3xx_hal_tim.c" />
+    <ClCompile Include="..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_F3_V1.10.0\Drivers\STM32F3xx_HAL_Driver\Src\stm32f3xx_hal_tim_ex.c" />
+    <ClCompile Include="..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_F3_V1.10.0\Drivers\STM32F3xx_HAL_Driver\Src\stm32f3xx_hal_uart.c" />
+    <ClCompile Include="..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_F3_V1.10.0\Drivers\STM32F3xx_HAL_Driver\Src\stm32f3xx_hal_uart_ex.c" />
+    <ClCompile Include="..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_F3_V1.10.0\Drivers\STM32F3xx_HAL_Driver\Src\stm32f3xx_hal_dma.c" />
+    <ClCompile Include="..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_F3_V1.10.0\Drivers\STM32F3xx_HAL_Driver\Src\stm32f3xx_hal_pwr.c" />
+    <ClCompile Include="..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_F3_V1.10.0\Drivers\STM32F3xx_HAL_Driver\Src\stm32f3xx_hal_pwr_ex.c" />
+    <ClCompile Include="..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_F3_V1.10.0\Drivers\STM32F3xx_HAL_Driver\Src\stm32f3xx_hal_i2c.c" />
+    <ClCompile Include="..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_F3_V1.10.0\Drivers\STM32F3xx_HAL_Driver\Src\stm32f3xx_hal_i2c_ex.c" />
+    <ClCompile Include="..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_F3_V1.10.0\Drivers\STM32F3xx_HAL_Driver\Src\stm32f3xx_hal_flash.c" />
+    <ClCompile Include="..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_F3_V1.10.0\Drivers\STM32F3xx_HAL_Driver\Src\stm32f3xx_hal_flash_ex.c" />
+    <ClCompile Include="..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_F3_V1.10.0\Drivers\STM32F3xx_HAL_Driver\Src\stm32f3xx_hal_gpio.c" />
+    <None Include="stm32.props" />
+    <ClCompile Include="$(BSP_ROOT)\STM32F3xxxx\StartupFiles\startup_stm32f303xe.c" />
+    <ClInclude Include="Inc\gpio.h" />
+    <ClInclude Include="Inc\i2c.h" />
+    <ClInclude Include="Inc\ssd1306.h" />
+    <ClInclude Include="Inc\ssd1306_fonts.h" />
+    <ClInclude Include="Inc\usart.h" />
+    <ClInclude Include="Inc\stm32f3xx_it.h" />
+    <ClInclude Include="Inc\stm32f3xx_hal_conf.h" />
+    <ClInclude Include="Inc\main.h" />
+    <ClInclude Include="..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_F3_V1.10.0\Drivers\CMSIS\Include\core_cm4.h" />
+    <ClInclude Include="..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_F3_V1.10.0\Drivers\CMSIS\Device\ST\STM32F3xx\Include\stm32f3xx.h" />
+    <ClInclude Include="..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_F3_V1.10.0\Drivers\CMSIS\Device\ST\STM32F3xx\Include\system_stm32f3xx.h" />
+    <ClInclude Include="..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_F3_V1.10.0\Drivers\STM32F3xx_HAL_Driver\Inc\stm32f3xx_hal.h" />
+    <ClInclude Include="..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_F3_V1.10.0\Drivers\STM32F3xx_HAL_Driver\Inc\Legacy\stm32_hal_legacy.h" />
+    <ClInclude Include="..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_F3_V1.10.0\Drivers\STM32F3xx_HAL_Driver\Inc\stm32f3xx_hal_def.h" />
+    <ClInclude Include="..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_F3_V1.10.0\Drivers\STM32F3xx_HAL_Driver\Inc\stm32f3xx_hal_rcc.h" />
+    <ClInclude Include="..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_F3_V1.10.0\Drivers\STM32F3xx_HAL_Driver\Inc\stm32f3xx_hal_rcc_ex.h" />
+    <ClInclude Include="..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_F3_V1.10.0\Drivers\STM32F3xx_HAL_Driver\Inc\stm32f3xx_hal_cortex.h" />
+    <ClInclude Include="..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_F3_V1.10.0\Drivers\STM32F3xx_HAL_Driver\Inc\stm32f3xx_hal_tim.h" />
+    <ClInclude Include="..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_F3_V1.10.0\Drivers\STM32F3xx_HAL_Driver\Inc\stm32f3xx_hal_tim_ex.h" />
+    <ClInclude Include="..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_F3_V1.10.0\Drivers\STM32F3xx_HAL_Driver\Inc\stm32f3xx_hal_uart.h" />
+    <ClInclude Include="..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_F3_V1.10.0\Drivers\STM32F3xx_HAL_Driver\Inc\stm32f3xx_hal_uart_ex.h" />
+    <ClInclude Include="..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_F3_V1.10.0\Drivers\STM32F3xx_HAL_Driver\Inc\stm32f3xx_hal_dma_ex.h" />
+    <ClInclude Include="..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_F3_V1.10.0\Drivers\STM32F3xx_HAL_Driver\Inc\stm32f3xx_hal_dma.h" />
+    <ClInclude Include="..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_F3_V1.10.0\Drivers\STM32F3xx_HAL_Driver\Inc\stm32f3xx_hal_pwr.h" />
+    <ClInclude Include="..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_F3_V1.10.0\Drivers\STM32F3xx_HAL_Driver\Inc\stm32f3xx_hal_pwr_ex.h" />
+    <ClInclude Include="..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_F3_V1.10.0\Drivers\STM32F3xx_HAL_Driver\Inc\stm32f3xx_hal_i2c.h" />
+    <ClInclude Include="..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_F3_V1.10.0\Drivers\STM32F3xx_HAL_Driver\Inc\stm32f3xx_hal_i2c_ex.h" />
+    <ClInclude Include="..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_F3_V1.10.0\Drivers\STM32F3xx_HAL_Driver\Inc\stm32f3xx_hal_flash.h" />
+    <ClInclude Include="..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_F3_V1.10.0\Drivers\STM32F3xx_HAL_Driver\Inc\stm32f3xx_hal_flash_ex.h" />
+    <ClInclude Include="..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_F3_V1.10.0\Drivers\STM32F3xx_HAL_Driver\Inc\stm32f3xx_hal_gpio.h" />
+    <ClInclude Include="..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_F3_V1.10.0\Drivers\STM32F3xx_HAL_Driver\Inc\stm32f3xx_hal_gpio_ex.h" />
+    <None Include="f303-v1-Debug.vgdbsettings" />
+    <None Include="f303-v1-Release.vgdbsettings" />
+    <None Include="stm32.xml" />
+  </ItemGroup>
+</Project>
