@@ -20,11 +20,13 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "i2c.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include <stdio.h>
+#include "ssd1306.h"
+#include "fonts.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -51,7 +53,7 @@
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
-
+void HAL_I2C_ClearBusyFlagErrata_2_14_7(I2C_HandleTypeDef *hi2c);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -65,44 +67,54 @@ void SystemClock_Config(void);
   */
 int main(void)
 {
-  /* USER CODE BEGIN 1 */
+	/* USER CODE BEGIN 1 */
 
-  /* USER CODE END 1 */
+	/* USER CODE END 1 */
   
 
-  /* MCU Configuration--------------------------------------------------------*/
+	/* MCU Configuration--------------------------------------------------------*/
 
-  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Init();
+	/* Reset of all peripherals, Initializes the Flash interface and the Systick. */
+	HAL_Init();
 
-  /* USER CODE BEGIN Init */
+	/* USER CODE BEGIN Init */
 
-  /* USER CODE END Init */
+	/* USER CODE END Init */
 
-  /* Configure the system clock */
-  SystemClock_Config();
+	/* Configure the system clock */
+	SystemClock_Config();
 
-  /* USER CODE BEGIN SysInit */
+	/* USER CODE BEGIN SysInit */
+	/* USER CODE END SysInit */
 
-  /* USER CODE END SysInit */
+	/* Initialize all configured peripherals */
+	MX_GPIO_Init();
+	MX_I2C1_Init();
+	/* USER CODE BEGIN 2 */
+	//HAL_I2C_ClearBusyFlagErrata_2_14_7(&hi2c1);
+	HAL_Delay(1000);
+	//uint8_t buf[3] = { 0x10, 0x11, 0x12 };
+	/* USER CODE END 2 */
 
-  /* Initialize all configured peripherals */
-  MX_GPIO_Init();
-  /* USER CODE BEGIN 2 */
-  /* USER CODE END 2 */
-
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
+	/* Infinite loop */
+	/* USER CODE BEGIN WHILE */
 	while (1)
 	{
-    /* USER CODE END WHILE */
-		HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_SET);
-		HAL_Delay(200);
-		HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
-		HAL_Delay(200);
-    /* USER CODE BEGIN 3 */
+		/* USER CODE END WHILE */
+
+		/* USER CODE BEGIN 3 */
+		//HAL_StatusTypeDef status = HAL_I2C_Master_Transmit(&hi2c1, 0x3C, buf, 3, 5000);
+		HAL_Delay(1000);
+		
+		SSD1306_Init();   // initialize the diaply 
+
+		SSD1306_GotoXY(10, 10);  // goto 10, 10 
+		SSD1306_Puts("HELLO", &Font_11x18, 1);  // print Hello 
+		SSD1306_GotoXY(10, 30); 
+			  SSD1306_Puts("WORLD !!", &Font_11x18, 1); 
+			  SSD1306_UpdateScreen();  // update screen
 	}
-  /* USER CODE END 3 */
+	/* USER CODE END 3 */
 }
 
 /**
@@ -111,61 +123,141 @@ int main(void)
   */
 void SystemClock_Config(void)
 {
-  RCC_OscInitTypeDef RCC_OscInitStruct = {0};
-  RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+	RCC_OscInitTypeDef RCC_OscInitStruct = { 0 };
+	RCC_ClkInitTypeDef RCC_ClkInitStruct = { 0 };
 
-  /** Initializes the CPU, AHB and APB busses clocks 
-  */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
-  RCC_OscInitStruct.HSEState = RCC_HSE_ON;
-  RCC_OscInitStruct.HSEPredivValue = RCC_HSE_PREDIV_DIV1;
-  RCC_OscInitStruct.HSIState = RCC_HSI_ON;
-  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
-  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
-  RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL9;
-  if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /** Initializes the CPU, AHB and APB busses clocks 
-  */
-  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
-                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
-  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
-  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
-  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
-  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+	/** Initializes the CPU, AHB and APB busses clocks 
+	*/
+	RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
+	RCC_OscInitStruct.HSEState = RCC_HSE_ON;
+	RCC_OscInitStruct.HSEPredivValue = RCC_HSE_PREDIV_DIV1;
+	RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+	RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+	RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
+	RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL9;
+	if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+	{
+		Error_Handler();
+	}
+	/** Initializes the CPU, AHB and APB busses clocks 
+	*/
+	RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK
+	                            | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2;
+	RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+	RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+	RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
+	RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
 
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
-  {
-    Error_Handler();
-  }
+	if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
+	{
+		Error_Handler();
+	}
 }
 
 /* USER CODE BEGIN 4 */
+void HAL_I2C_ClearBusyFlagErrata_2_14_7(I2C_HandleTypeDef *hi2c) {
+
+	static uint8_t resetTried = 0;
+	if (resetTried == 1) {
+		return ;
+	}
+	uint32_t SDA_PIN = GPIO_PIN_7;
+	uint32_t SCL_PIN = GPIO_PIN_6;
+	GPIO_InitTypeDef GPIO_InitStruct;
+
+	// 1
+	__HAL_I2C_DISABLE(hi2c);
+
+	// 2
+	GPIO_InitStruct.Pin = SDA_PIN | SCL_PIN;
+	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_OD;
+	GPIO_InitStruct.Pull = GPIO_NOPULL;
+	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+	HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+	P_HAL_GPIO_WRITE_ODR(GPIOB, SDA_PIN);
+	P_HAL_GPIO_WRITE_ODR(GPIOB, SCL_PIN);
+
+	// 3
+	GPIO_PinState pinState;
+	if (HAL_GPIO_ReadPin(GPIOB, SDA_PIN) == GPIO_PIN_RESET) {
+		for (;;) {}
+	}
+	if (HAL_GPIO_ReadPin(GPIOB, SCL_PIN) == GPIO_PIN_RESET) {
+		for (;;) {}
+	}
+
+	// 4
+	GPIO_InitStruct.Pin = SDA_PIN;
+	HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+	HAL_GPIO_TogglePin(GPIOB, SDA_PIN);
+
+	// 5
+	if(HAL_GPIO_ReadPin(GPIOB, SDA_PIN) == GPIO_PIN_SET) {
+		for (;;) {}
+	}
+
+	// 6
+	GPIO_InitStruct.Pin = SCL_PIN;
+	HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+	HAL_GPIO_TogglePin(GPIOB, SCL_PIN);
+
+	// 7
+	if(HAL_GPIO_ReadPin(GPIOB, SCL_PIN) == GPIO_PIN_SET) {
+		for (;;) {}
+	}
+
+	// 8
+	GPIO_InitStruct.Pin = SDA_PIN;
+	HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+	P_HAL_GPIO_WRITE_ODR(GPIOB, SDA_PIN);
+
+	// 9
+	if(HAL_GPIO_ReadPin(GPIOB, SDA_PIN) == GPIO_PIN_RESET) {
+		for (;;) {}
+	}
+
+	// 10
+	GPIO_InitStruct.Pin = SCL_PIN;
+	HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+	P_HAL_GPIO_WRITE_ODR(GPIOB, SCL_PIN);
+
+	// 11
+	if(HAL_GPIO_ReadPin(GPIOB, SCL_PIN) == GPIO_PIN_RESET) {
+		for (;;) {}
+	}
+
+	// 12
+	GPIO_InitStruct.Pin = SDA_PIN | SCL_PIN;
+	GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
+	GPIO_InitStruct.Speed = GPIO_MODE_AF_OD;
+	HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+	// 13
+	hi2c->Instance->CR1 |= I2C_CR1_SWRST;
+
+	// 14
+	hi2c->Instance->CR1 ^= I2C_CR1_SWRST;
+
+	// 15
+	__HAL_I2C_ENABLE(hi2c);
+
+	resetTried = 1;
+}
+
+void P_HAL_GPIO_WRITE_ODR(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
+{
+	/* Check the parameters */
+	assert_param(IS_GPIO_PIN(GPIO_Pin));
+
+	GPIOx->ODR |= GPIO_Pin;
+}
 
 /* USER CODE END 4 */
-
-/**
-  * @brief  Period elapsed callback in non blocking mode
-  * @note   This function is called  when TIM4 interrupt took place, inside
-  * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
-  * a global variable "uwTick" used as application time base.
-  * @param  htim : TIM handle
-  * @retval None
-  */
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
-{
-  /* USER CODE BEGIN Callback 0 */
-
-  /* USER CODE END Callback 0 */
-  if (htim->Instance == TIM4) {
-    HAL_IncTick();
-  }
-  /* USER CODE BEGIN Callback 1 */
-
-  /* USER CODE END Callback 1 */
-}
 
 /**
   * @brief  This function is executed in case of error occurrence.
@@ -173,10 +265,10 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
   */
 void Error_Handler(void)
 {
-  /* USER CODE BEGIN Error_Handler_Debug */
+	/* USER CODE BEGIN Error_Handler_Debug */
 	/* User can add his own implementation to report the HAL error return state */
 
-  /* USER CODE END Error_Handler_Debug */
+	/* USER CODE END Error_Handler_Debug */
 }
 
 #ifdef  USE_FULL_ASSERT
@@ -189,10 +281,10 @@ void Error_Handler(void)
   */
 void assert_failed(uint8_t *file, uint32_t line)
 { 
-  /* USER CODE BEGIN 6 */
+	/* USER CODE BEGIN 6 */
 	/* User can add his own implementation to report the file name and line number,
 	   tex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
-  /* USER CODE END 6 */
+	 /* USER CODE END 6 */
 }
 #endif /* USE_FULL_ASSERT */
 

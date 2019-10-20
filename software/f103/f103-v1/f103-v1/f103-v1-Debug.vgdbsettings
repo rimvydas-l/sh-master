@@ -16,10 +16,7 @@
       </Version>
     </ToolchainID>
     <ProjectFile>f103-v1.vcxproj</ProjectFile>
-    <RemoteBuildEnvironment>
-      <Records />
-    </RemoteBuildEnvironment>
-    <ParallelJobCount>1</ParallelJobCount>
+    <ParallelJobCount>0</ParallelJobCount>
     <SuppressDirectoryChangeMessages>true</SuppressDirectoryChangeMessages>
   </Build>
   <Debug xsi:type="com.visualgdb.debug.embedded">
@@ -106,7 +103,6 @@
     <ShowMessageAfterExecuting>true</ShowMessageAfterExecuting>
   </CustomShortcuts>
   <UserDefinedVariables />
-  <ImportedPropertySheets />
   <CodeSense>
     <Enabled>Unknown</Enabled>
     <ExtraSettings>

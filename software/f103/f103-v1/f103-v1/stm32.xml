@@ -45,7 +45,7 @@
     <AllDependencies>
       <ProjectDependency>
         <RelativePath>f103-v1.gpdsc</RelativePath>
-        <Timestamp>132155498839795079</Timestamp>
+        <Timestamp>132159055900562283</Timestamp>
       </ProjectDependency>
     </AllDependencies>
     <RootDirectory>
@@ -172,6 +172,17 @@
               </Files>
             </VirtualDirectorySnapshot>
             <VirtualDirectorySnapshot>
+              <Name>I2C</Name>
+              <Files>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_F1_V1.8.0\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_i2c.h</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_F1_V1.8.0\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_i2c.c</RelativePath>
+                </VirtualFileSnapshot>
+              </Files>
+            </VirtualDirectorySnapshot>
+            <VirtualDirectorySnapshot>
               <Name>FLASH</Name>
               <Files>
                 <VirtualFileSnapshot>
@@ -214,6 +225,9 @@
           <RelativePath>Inc\gpio.h</RelativePath>
         </VirtualFileSnapshot>
         <VirtualFileSnapshot>
+          <RelativePath>Inc\i2c.h</RelativePath>
+        </VirtualFileSnapshot>
+        <VirtualFileSnapshot>
           <RelativePath>Inc\stm32f1xx_it.h</RelativePath>
         </VirtualFileSnapshot>
         <VirtualFileSnapshot>
@@ -226,13 +240,13 @@
           <RelativePath>Src\gpio.c</RelativePath>
         </VirtualFileSnapshot>
         <VirtualFileSnapshot>
+          <RelativePath>Src\i2c.c</RelativePath>
+        </VirtualFileSnapshot>
+        <VirtualFileSnapshot>
           <RelativePath>Src\stm32f1xx_it.c</RelativePath>
         </VirtualFileSnapshot>
         <VirtualFileSnapshot>
           <RelativePath>Src\stm32f1xx_hal_msp.c</RelativePath>
-        </VirtualFileSnapshot>
-        <VirtualFileSnapshot>
-          <RelativePath>Src\stm32f1xx_hal_timebase_tim.c</RelativePath>
         </VirtualFileSnapshot>
         <VirtualFileSnapshot>
           <RelativePath>Src\main.c</RelativePath>
