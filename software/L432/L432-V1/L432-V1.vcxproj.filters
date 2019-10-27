@@ -106,12 +106,6 @@
     <Filter Include="VisualGDB settings">
       <UniqueIdentifier>{f4734248-53f3-4fb2-b3a4-12c8d5c64fa5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source files\STM32Cube HAL\RTC">
-      <UniqueIdentifier>{e47aaaa2-f9f2-4a3f-b92a-25d553a1f558}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header files\STM32Cube HAL\RTC">
-      <UniqueIdentifier>{f4b7d0d5-d0fd-4e15-868e-60b68feacaf1}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\gpio.c">
@@ -306,21 +300,12 @@
     <ClCompile Include="Src\ssd1306_fonts.c">
       <Filter>Source files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\rtc.c">
+    <ClCompile Include="data.c">
       <Filter>Source files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_rtc.c">
-      <Filter>Source files\STM32Cube HAL\RTC</Filter>
+    <ClCompile Include="screen.c">
+      <Filter>Source files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_rtc_ex.c">
-      <Filter>Source files\STM32Cube HAL\RTC</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal_rtc.h">
-      <Filter>Header files\STM32Cube HAL\RTC</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal_rtc_ex.h">
-      <Filter>Header files\STM32Cube HAL\RTC</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Inc\ssd1306.h">
@@ -329,7 +314,10 @@
     <ClInclude Include="Inc\ssd1306_fonts.h">
       <Filter>Header files</Filter>
     </ClInclude>
-    <ClInclude Include="Inc\rtc.h">
+    <ClInclude Include="screen.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="data.h">
       <Filter>Header files</Filter>
     </ClInclude>
   </ItemGroup>

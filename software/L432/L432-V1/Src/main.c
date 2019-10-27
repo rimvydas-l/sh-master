@@ -21,13 +21,13 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "i2c.h"
-#include "rtc.h"
 #include "usart.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "ssd1306.h"
+#include "data.h"
+#include "screen.h"
 #include<stdio.h> 
 /* USER CODE END Includes */
 
@@ -49,9 +49,9 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-char uartStr[100];
-RTC_TimeTypeDef time;
-RTC_DateTypeDef date;
+SCOPE_t scopeData;
+CURRENT_DATA_t currentData;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -97,17 +97,29 @@ int main(void)
   MX_I2C1_Init();
   MX_I2C3_Init();
   MX_USART2_UART_Init();
-  MX_RTC_Init();
   /* USER CODE BEGIN 2 */
-	ssd1306_Init();
-	ssd1306_Fill(0);
-	ssd1306_UpdateScreen();
+	data_Init();
+	screen_init();
 	
-	ssd1306_SetCursor(3, 18);
-	ssd1306_WriteString("Myliu IEVA", Font_7x10, 1);
-	ssd1306_UpdateScreen();
-
+	scopeData.enabledInputs = 0xAAAA;
+	scopeData.enabledOutputs = 0x5555;
 	
+	scopeData.mapping[0] = 0x1;
+	scopeData.mapping[1] = 0x2;
+	scopeData.mapping[2] = 0x4;
+	scopeData.mapping[3] = 0x8;
+	scopeData.mapping[4] = 0x10;
+	scopeData.mapping[5] = 0x20;
+	scopeData.mapping[6] = 0x40;
+	scopeData.mapping[7] = 0x80;
+	scopeData.mapping[8] = 0x100;
+	scopeData.mapping[9] = 0x200;
+	scopeData.mapping[10] = 0x400;
+	scopeData.mapping[11] = 0x800;
+	scopeData.mapping[12] = 0x1000;
+	scopeData.mapping[13] = 0x2000;
+	scopeData.mapping[14] = 0x4000;
+	scopeData.mapping[15] = 0x8000;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -117,24 +129,15 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-		HAL_RTC_GetTime(&hrtc, &time, RTC_FORMAT_BIN);
-		HAL_RTC_GetDate(&hrtc, &date, RTC_FORMAT_BIN);
-		sprintf(uartStr, "Time: %d:%d:%d\r\n", time.Hours, time.Minutes, time.Seconds);
-		HAL_UART_Transmit(&huart2, uartStr, sizeof(uartStr), 200);
-		  
-		  
-		ssd1306_DrawPixel(0, 0, 1);
-		ssd1306_DrawPixel(127, 63, 1);
-		ssd1306_DrawPixel(127, 0, 0);
-		ssd1306_DrawPixel(0, 63, 0);
-		ssd1306_UpdateScreen();
-		HAL_Delay(300);
-		ssd1306_DrawPixel(0, 0, 0);
-		ssd1306_DrawPixel(127, 63, 0);
-		ssd1306_DrawPixel(127, 0, 1);
-		ssd1306_DrawPixel(0, 63, 1);
-		ssd1306_UpdateScreen();
-		HAL_Delay(300);
+		currentData.inputStatus = 0x0000;
+		screen_draw(&currentData, &scopeData);
+		HAL_Delay(500);
+		
+		
+		currentData.inputStatus = 0xFFFF;  
+		screen_draw(&currentData, &scopeData);
+		HAL_Delay(500);
+
 	 }
   /* USER CODE END 3 */
 }
@@ -155,10 +158,8 @@ void SystemClock_Config(void)
   __HAL_RCC_LSEDRIVE_CONFIG(RCC_LSEDRIVE_LOW);
   /** Initializes the CPU, AHB and APB busses clocks 
   */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_LSI|RCC_OSCILLATORTYPE_LSE
-                              |RCC_OSCILLATORTYPE_MSI;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_LSE|RCC_OSCILLATORTYPE_MSI;
   RCC_OscInitStruct.LSEState = RCC_LSE_ON;
-  RCC_OscInitStruct.LSIState = RCC_LSI_ON;
   RCC_OscInitStruct.MSIState = RCC_MSI_ON;
   RCC_OscInitStruct.MSICalibrationValue = 0;
   RCC_OscInitStruct.MSIClockRange = RCC_MSIRANGE_6;
@@ -186,12 +187,11 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
-  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_RTC|RCC_PERIPHCLK_USART2
-                              |RCC_PERIPHCLK_I2C1|RCC_PERIPHCLK_I2C3;
+  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_USART2|RCC_PERIPHCLK_I2C1
+                              |RCC_PERIPHCLK_I2C3;
   PeriphClkInit.Usart2ClockSelection = RCC_USART2CLKSOURCE_PCLK1;
   PeriphClkInit.I2c1ClockSelection = RCC_I2C1CLKSOURCE_PCLK1;
   PeriphClkInit.I2c3ClockSelection = RCC_I2C3CLKSOURCE_PCLK1;
-  PeriphClkInit.RTCClockSelection = RCC_RTCCLKSOURCE_LSI;
   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
   {
     Error_Handler();

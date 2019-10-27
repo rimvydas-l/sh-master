@@ -49,7 +49,7 @@
     <AllDependencies>
       <ProjectDependency>
         <RelativePath>L432-V1.gpdsc</RelativePath>
-        <Timestamp>132161491407526326</Timestamp>
+        <Timestamp>132166524848592165</Timestamp>
       </ProjectDependency>
     </AllDependencies>
     <RootDirectory>
@@ -115,19 +115,30 @@
               </Files>
             </VirtualDirectorySnapshot>
             <VirtualDirectorySnapshot>
-              <Name>RTC</Name>
+              <Name>RCC</Name>
               <Files>
                 <VirtualFileSnapshot>
-                  <RelativePath>..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal_rtc.h</RelativePath>
+                  <RelativePath>..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal_rcc.h</RelativePath>
                 </VirtualFileSnapshot>
                 <VirtualFileSnapshot>
-                  <RelativePath>..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_rtc.c</RelativePath>
+                  <RelativePath>..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal_rcc_ex.h</RelativePath>
                 </VirtualFileSnapshot>
                 <VirtualFileSnapshot>
-                  <RelativePath>..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal_rtc_ex.h</RelativePath>
+                  <RelativePath>..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_rcc.c</RelativePath>
                 </VirtualFileSnapshot>
                 <VirtualFileSnapshot>
-                  <RelativePath>..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_rtc_ex.c</RelativePath>
+                  <RelativePath>..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_rcc_ex.c</RelativePath>
+                </VirtualFileSnapshot>
+              </Files>
+            </VirtualDirectorySnapshot>
+            <VirtualDirectorySnapshot>
+              <Name>CORTEX</Name>
+              <Files>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal_cortex.h</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_cortex.c</RelativePath>
                 </VirtualFileSnapshot>
               </Files>
             </VirtualDirectorySnapshot>
@@ -139,6 +150,26 @@
                 </VirtualFileSnapshot>
                 <VirtualFileSnapshot>
                   <RelativePath>..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_exti.c</RelativePath>
+                </VirtualFileSnapshot>
+              </Files>
+            </VirtualDirectorySnapshot>
+            <VirtualDirectorySnapshot>
+              <Name>TIM</Name>
+              <Files>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal_tim.h</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_tim.c</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal.h</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal_tim_ex.h</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_tim_ex.c</RelativePath>
                 </VirtualFileSnapshot>
               </Files>
             </VirtualDirectorySnapshot>
@@ -160,6 +191,23 @@
               </Files>
             </VirtualDirectorySnapshot>
             <VirtualDirectorySnapshot>
+              <Name>DMA</Name>
+              <Files>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal_dma.h</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_dma.c</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal_dma_ex.h</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_dma_ex.c</RelativePath>
+                </VirtualFileSnapshot>
+              </Files>
+            </VirtualDirectorySnapshot>
+            <VirtualDirectorySnapshot>
               <Name>PWR</Name>
               <Files>
                 <VirtualFileSnapshot>
@@ -173,6 +221,23 @@
                 </VirtualFileSnapshot>
                 <VirtualFileSnapshot>
                   <RelativePath>..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_pwr_ex.c</RelativePath>
+                </VirtualFileSnapshot>
+              </Files>
+            </VirtualDirectorySnapshot>
+            <VirtualDirectorySnapshot>
+              <Name>I2C</Name>
+              <Files>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal_i2c.h</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal_i2c_ex.h</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_i2c.c</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_i2c_ex.c</RelativePath>
                 </VirtualFileSnapshot>
               </Files>
             </VirtualDirectorySnapshot>
@@ -213,88 +278,6 @@
                 </VirtualFileSnapshot>
               </Files>
             </VirtualDirectorySnapshot>
-            <VirtualDirectorySnapshot>
-              <Name>RCC</Name>
-              <Files>
-                <VirtualFileSnapshot>
-                  <RelativePath>..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal_rcc.h</RelativePath>
-                </VirtualFileSnapshot>
-                <VirtualFileSnapshot>
-                  <RelativePath>..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal_rcc_ex.h</RelativePath>
-                </VirtualFileSnapshot>
-                <VirtualFileSnapshot>
-                  <RelativePath>..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_rcc.c</RelativePath>
-                </VirtualFileSnapshot>
-                <VirtualFileSnapshot>
-                  <RelativePath>..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_rcc_ex.c</RelativePath>
-                </VirtualFileSnapshot>
-              </Files>
-            </VirtualDirectorySnapshot>
-            <VirtualDirectorySnapshot>
-              <Name>CORTEX</Name>
-              <Files>
-                <VirtualFileSnapshot>
-                  <RelativePath>..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal_cortex.h</RelativePath>
-                </VirtualFileSnapshot>
-                <VirtualFileSnapshot>
-                  <RelativePath>..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_cortex.c</RelativePath>
-                </VirtualFileSnapshot>
-              </Files>
-            </VirtualDirectorySnapshot>
-            <VirtualDirectorySnapshot>
-              <Name>TIM</Name>
-              <Files>
-                <VirtualFileSnapshot>
-                  <RelativePath>..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal_tim.h</RelativePath>
-                </VirtualFileSnapshot>
-                <VirtualFileSnapshot>
-                  <RelativePath>..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_tim.c</RelativePath>
-                </VirtualFileSnapshot>
-                <VirtualFileSnapshot>
-                  <RelativePath>..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal.h</RelativePath>
-                </VirtualFileSnapshot>
-                <VirtualFileSnapshot>
-                  <RelativePath>..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal_tim_ex.h</RelativePath>
-                </VirtualFileSnapshot>
-                <VirtualFileSnapshot>
-                  <RelativePath>..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_tim_ex.c</RelativePath>
-                </VirtualFileSnapshot>
-              </Files>
-            </VirtualDirectorySnapshot>
-            <VirtualDirectorySnapshot>
-              <Name>DMA</Name>
-              <Files>
-                <VirtualFileSnapshot>
-                  <RelativePath>..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal_dma.h</RelativePath>
-                </VirtualFileSnapshot>
-                <VirtualFileSnapshot>
-                  <RelativePath>..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_dma.c</RelativePath>
-                </VirtualFileSnapshot>
-                <VirtualFileSnapshot>
-                  <RelativePath>..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal_dma_ex.h</RelativePath>
-                </VirtualFileSnapshot>
-                <VirtualFileSnapshot>
-                  <RelativePath>..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_dma_ex.c</RelativePath>
-                </VirtualFileSnapshot>
-              </Files>
-            </VirtualDirectorySnapshot>
-            <VirtualDirectorySnapshot>
-              <Name>I2C</Name>
-              <Files>
-                <VirtualFileSnapshot>
-                  <RelativePath>..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal_i2c.h</RelativePath>
-                </VirtualFileSnapshot>
-                <VirtualFileSnapshot>
-                  <RelativePath>..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Inc\stm32l4xx_hal_i2c_ex.h</RelativePath>
-                </VirtualFileSnapshot>
-                <VirtualFileSnapshot>
-                  <RelativePath>..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_i2c.c</RelativePath>
-                </VirtualFileSnapshot>
-                <VirtualFileSnapshot>
-                  <RelativePath>..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Src\stm32l4xx_hal_i2c_ex.c</RelativePath>
-                </VirtualFileSnapshot>
-              </Files>
-            </VirtualDirectorySnapshot>
           </Subdirectories>
           <Files />
         </VirtualDirectorySnapshot>
@@ -305,9 +288,6 @@
         </VirtualFileSnapshot>
         <VirtualFileSnapshot>
           <RelativePath>Inc\i2c.h</RelativePath>
-        </VirtualFileSnapshot>
-        <VirtualFileSnapshot>
-          <RelativePath>Inc\rtc.h</RelativePath>
         </VirtualFileSnapshot>
         <VirtualFileSnapshot>
           <RelativePath>Inc\usart.h</RelativePath>
@@ -326,9 +306,6 @@
         </VirtualFileSnapshot>
         <VirtualFileSnapshot>
           <RelativePath>Src\i2c.c</RelativePath>
-        </VirtualFileSnapshot>
-        <VirtualFileSnapshot>
-          <RelativePath>Src\rtc.c</RelativePath>
         </VirtualFileSnapshot>
         <VirtualFileSnapshot>
           <RelativePath>Src\usart.c</RelativePath>
