@@ -306,6 +306,9 @@
     <ClCompile Include="screen.c">
       <Filter>Source files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\mcp23017.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Inc\ssd1306.h">
@@ -318,6 +321,9 @@
       <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="data.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\mcp23017.h">
       <Filter>Header files</Filter>
     </ClInclude>
   </ItemGroup>

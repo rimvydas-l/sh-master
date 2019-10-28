@@ -28,6 +28,7 @@
 /* USER CODE BEGIN Includes */
 #include "data.h"
 #include "screen.h"
+#include "mcp23017.h"
 #include<stdio.h> 
 /* USER CODE END Includes */
 
@@ -52,6 +53,7 @@
 SCOPE_t scopeData;
 CURRENT_DATA_t currentData;
 
+MCP23017_HandleTypeDef hmcp_input;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -101,25 +103,35 @@ int main(void)
 	data_Init();
 	screen_init();
 	
-	scopeData.enabledInputs = 0xAAAA;
-	scopeData.enabledOutputs = 0x5555;
+	mcp23017_init(&hmcp_input, &hi2c1, MCP23017_ADDRESS_20);
 	
-	scopeData.mapping[0] = 0x1;
-	scopeData.mapping[1] = 0x2;
-	scopeData.mapping[2] = 0x4;
-	scopeData.mapping[3] = 0x8;
-	scopeData.mapping[4] = 0x10;
-	scopeData.mapping[5] = 0x20;
-	scopeData.mapping[6] = 0x40;
-	scopeData.mapping[7] = 0x80;
-	scopeData.mapping[8] = 0x100;
-	scopeData.mapping[9] = 0x200;
-	scopeData.mapping[10] = 0x400;
-	scopeData.mapping[11] = 0x800;
-	scopeData.mapping[12] = 0x1000;
-	scopeData.mapping[13] = 0x2000;
-	scopeData.mapping[14] = 0x4000;
-	scopeData.mapping[15] = 0x8000;
+	mcp23017_mirror_int(&hmcp_input);
+	
+	mcp23017_iodir(&hmcp_input, MCP23017_PORTA, MCP23017_IODIR_ALL_INPUT);
+	mcp23017_iodir(&hmcp_input, MCP23017_PORTB, MCP23017_IODIR_ALL_INPUT);
+	
+	mcp23017_int_en(&hmcp_input, MCP23017_PORTA, 0xFF);
+	mcp23017_int_en(&hmcp_input, MCP23017_PORTB, 0xFF);
+	
+	scopeData.enabledInputs = 0xFFFF;
+	scopeData.enabledOutputs = 0x0000;
+	
+//	scopeData.mapping[0] = 0x1;
+//	scopeData.mapping[1] = 0x2;
+//	scopeData.mapping[2] = 0x4;
+//	scopeData.mapping[3] = 0x8;
+//	scopeData.mapping[4] = 0x10;
+//	scopeData.mapping[5] = 0x20;
+//	scopeData.mapping[6] = 0x40;
+//	scopeData.mapping[7] = 0x80;
+//	scopeData.mapping[8] = 0x100;
+//	scopeData.mapping[9] = 0x200;
+//	scopeData.mapping[10] = 0x400;
+//	scopeData.mapping[11] = 0x800;
+//	scopeData.mapping[12] = 0x1000;
+//	scopeData.mapping[13] = 0x2000;
+//	scopeData.mapping[14] = 0x4000;
+//	scopeData.mapping[15] = 0x8000;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -129,14 +141,12 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-		currentData.inputStatus = 0x0000;
+		mcp23017_read_gpio(&hmcp_input, MCP23017_PORTA);
+		mcp23017_read_gpio(&hmcp_input, MCP23017_PORTB);
+
+		currentData.inputStatus = hmcp_input.gpio[0]<<8 | hmcp_input.gpio[1];
 		screen_draw(&currentData, &scopeData);
-		HAL_Delay(500);
-		
-		
-		currentData.inputStatus = 0xFFFF;  
-		screen_draw(&currentData, &scopeData);
-		HAL_Delay(500);
+		HAL_Delay(50);
 
 	 }
   /* USER CODE END 3 */
@@ -208,7 +218,12 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+	if (GPIO_Pin == GPIO_PIN_6) {
+		HAL_GPIO_TogglePin(LD3_GPIO_Port, LD3_Pin);
+	}
+}
 /* USER CODE END 4 */
 
 /**
