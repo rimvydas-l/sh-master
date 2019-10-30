@@ -1,5 +1,7 @@
 // Copyright (c) 2018 Rudá Moura <ruda.moura@gmail.com>
 // License: The MIT License (MIT)
+#ifndef __MCP23017_H__
+#define __MCP23017_H__
 
 #include "stm32l4xx_hal.h"
 
@@ -73,3 +75,5 @@ HAL_StatusTypeDef	mcp23017_write_gpio(MCP23017_HandleTypeDef *hdev, uint8_t port
 
 HAL_StatusTypeDef	mcp23017_int_en(MCP23017_HandleTypeDef *hdev, uint8_t port, uint8_t en);
 HAL_StatusTypeDef	mcp23017_mirror_int(MCP23017_HandleTypeDef *hdev);
+
+#endif //__MCP23017_H__
