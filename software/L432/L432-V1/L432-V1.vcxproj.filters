@@ -414,6 +414,9 @@
     <ClCompile Include="input.c">
       <Filter>Source files</Filter>
     </ClCompile>
+    <ClCompile Include="mapper.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Inc\ssd1306.h">
@@ -438,6 +441,9 @@
       <Filter>Header files\STM32Cube HAL\FREERTOS</Filter>
     </ClInclude>
     <ClInclude Include="input.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="mapper.h">
       <Filter>Header files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -18,6 +18,7 @@ typedef struct {
 
 extern SCOPE_t scopeData;
 extern CURRENT_DATA_t currentData;
+extern CURRENT_DATA_t setData;
 
 void data_Init(void);
 

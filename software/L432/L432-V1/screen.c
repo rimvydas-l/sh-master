@@ -83,8 +83,12 @@ void draw_Mapping(uint16_t* mapping)
 	uint8_t baseHeight = INPUT_RECTANGLE_HEIGHT * 2 + 6;
 	
 	for (i = 0; i < 16; i++) {
-		for (j = 0; j < 16; j++) {
-			draw_MappingElement(i * (INPUT_RECTANGLE_WIDTH + INPUT_RECTANGLE_SPACING), j * 3 + baseHeight, mapping[i] & 1 << (15-j));
+		if ((scopeData.enabledInputs >> i) & 1U) {
+			for (j = 0; j < 16; j++) {
+				if ((scopeData.enabledOutputs >> (15-j)) & 1U) {
+					draw_MappingElement(i * (INPUT_RECTANGLE_WIDTH + INPUT_RECTANGLE_SPACING), j * 3 + baseHeight, mapping[i] & 1 << (15 - j));
+				}
+			}
 		}
 	}
 }

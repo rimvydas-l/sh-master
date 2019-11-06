@@ -41,16 +41,16 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
-      <AdditionalIncludeDirectories>Inc;..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\CMSIS\Include;..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\CMSIS\Device\ST\STM32L4xx\Include;..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Inc;..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Middlewares\Third_Party\FreeRTOS\Source\include;..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Inc\Legacy;../../../../../../Users/Rimvis/STM32Cube/Repository/STM32Cube_FW_L4_V1.14.0/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS;../../../../../../Users/Rimvis/STM32Cube/Repository/STM32Cube_FW_L4_V1.14.0/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../../../../Users/Rimvis/STM32Cube/Repository/STM32Cube_FW_L4_V1.14.0/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS;../../../../../../Users/Rimvis/STM32Cube/Repository/STM32Cube_FW_L4_V1.14.0/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3;Inc;..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\CMSIS\Include;..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\CMSIS\Device\ST\STM32L4xx\Include;..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Inc;..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Middlewares\Third_Party\FreeRTOS\Source\include;..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Drivers\STM32L4xx_HAL_Driver\Inc\Legacy;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEBUG=1;flash_layout;STM32L432xx;USE_FREERTOS;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions />
       <CLanguageStandard />
       <CPPLanguageStandard />
     </ClCompile>
     <Link>
-      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
-      <AdditionalLibraryNames>;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
-      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LibrarySearchDirectories>%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
       <AdditionalOptions />
       <LinkerScript />
     </Link>
@@ -80,6 +80,7 @@
     <ClCompile Include="..\..\..\..\..\..\Users\Rimvis\STM32Cube\Repository\STM32Cube_FW_L4_V1.14.0\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM3\port.c" />
     <ClCompile Include="data.c" />
     <ClCompile Include="input.c" />
+    <ClCompile Include="mapper.c" />
     <ClCompile Include="screen.c" />
     <ClCompile Include="Src\gpio.c" />
     <ClCompile Include="Src\i2c.c" />
@@ -115,6 +116,7 @@
     <ClInclude Include="data.h" />
     <ClInclude Include="Inc\mcp23017.h" />
     <ClInclude Include="input.h" />
+    <ClInclude Include="mapper.h" />
     <ClInclude Include="screen.h" />
     <None Include="stm32.props" />
     <ClCompile Include="$(BSP_ROOT)\STM32L4xxxx\StartupFiles\startup_stm32l432xx.c" />

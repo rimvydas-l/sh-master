@@ -1,6 +1,7 @@
 #MicroXplorer Configuration settings - do not modify
 FREERTOS.FootprintOK=true
-FREERTOS.IPParameters=Tasks01,configUSE_PREEMPTION,configMAX_PRIORITIES,configENABLE_BACKWARD_COMPATIBILITY,FootprintOK
+FREERTOS.IPParameters=Tasks01,configUSE_PREEMPTION,configMAX_PRIORITIES,configENABLE_BACKWARD_COMPATIBILITY,FootprintOK,Mutexes01
+FREERTOS.Mutexes01=i2c1_mutex,Dynamic,NULL;i2c3_mutex,Dynamic,NULL
 FREERTOS.Tasks01=screenTask,-2,128,StartScreenTask,Default,NULL,Dynamic,NULL,NULL;inputTask,0,128,StartInputTask,Default,NULL,Dynamic,NULL,NULL
 FREERTOS.configENABLE_BACKWARD_COMPATIBILITY=0
 FREERTOS.configMAX_PRIORITIES=5

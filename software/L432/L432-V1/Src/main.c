@@ -54,6 +54,7 @@
 /* USER CODE BEGIN PV */
 SCOPE_t scopeData;
 CURRENT_DATA_t currentData;
+CURRENT_DATA_t setData;
 
 MCP23017_HandleTypeDef hmcp_input;
 /* USER CODE END PV */
@@ -199,6 +200,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
 	if (GPIO_Pin == GPIO_PIN_6) {
 		HAL_GPIO_TogglePin(LD3_GPIO_Port, LD3_Pin);
+		osSignalSet(inputTaskHandle, 1);
 	}
 }
 /* USER CODE END 4 */

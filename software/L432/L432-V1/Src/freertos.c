@@ -30,6 +30,7 @@
 #include "screen.h"
 #include "mcp23017.h"
 #include "input.h"
+#include "mapper.h"
 
 /* USER CODE END Includes */
 
@@ -54,6 +55,8 @@
 /* USER CODE END Variables */
 osThreadId screenTaskHandle;
 osThreadId inputTaskHandle;
+osMutexId i2c1_mutexHandle;
+osMutexId i2c3_mutexHandle;
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -66,7 +69,7 @@ void StartInputTask(void const * argument);
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
 /* GetIdleTaskMemory prototype (linked to static allocation support) */
-void vApplicationGetIdleTaskMemory( StaticTask_t **ppxIdleTaskTCBBuffer, StackType_t **ppxIdleTaskStackBuffer, uint32_t *pulIdleTaskStackSize );
+void vApplicationGetIdleTaskMemory(StaticTask_t **ppxIdleTaskTCBBuffer, StackType_t **ppxIdleTaskStackBuffer, uint32_t *pulIdleTaskStackSize);
 
 /* USER CODE BEGIN GET_IDLE_TASK_MEMORY */
 static StaticTask_t xIdleTaskTCBBuffer;
@@ -87,38 +90,47 @@ void vApplicationGetIdleTaskMemory(StaticTask_t **ppxIdleTaskTCBBuffer, StackTyp
   * @retval None
   */
 void MX_FREERTOS_Init(void) {
-  /* USER CODE BEGIN Init */
+	/* USER CODE BEGIN Init */
        
-  /* USER CODE END Init */
+	/* USER CODE END Init */
 
-  /* USER CODE BEGIN RTOS_MUTEX */
-	  /* add mutexes, ... */
-  /* USER CODE END RTOS_MUTEX */
+	/* Create the mutex(es) */
+	/* definition and creation of i2c1_mutex */
+	osMutexDef(i2c1_mutex);
+	i2c1_mutexHandle = osMutexCreate(osMutex(i2c1_mutex));
 
-  /* USER CODE BEGIN RTOS_SEMAPHORES */
-	  /* add semaphores, ... */
-  /* USER CODE END RTOS_SEMAPHORES */
+	/* definition and creation of i2c3_mutex */
+	osMutexDef(i2c3_mutex);
+	i2c3_mutexHandle = osMutexCreate(osMutex(i2c3_mutex));
 
-  /* USER CODE BEGIN RTOS_TIMERS */
-	  /* start timers, add new ones, ... */
-  /* USER CODE END RTOS_TIMERS */
+	/* USER CODE BEGIN RTOS_MUTEX */
+		/* add mutexes, ... */
+	/* USER CODE END RTOS_MUTEX */
 
-  /* USER CODE BEGIN RTOS_QUEUES */
-	  /* add queues, ... */
-  /* USER CODE END RTOS_QUEUES */
+	/* USER CODE BEGIN RTOS_SEMAPHORES */
+		/* add semaphores, ... */
+	/* USER CODE END RTOS_SEMAPHORES */
 
-  /* Create the thread(s) */
-  /* definition and creation of screenTask */
-  osThreadDef(screenTask, StartScreenTask, osPriorityLow, 0, 128);
-  screenTaskHandle = osThreadCreate(osThread(screenTask), NULL);
+	/* USER CODE BEGIN RTOS_TIMERS */
+		/* start timers, add new ones, ... */
+	/* USER CODE END RTOS_TIMERS */
 
-  /* definition and creation of inputTask */
-  osThreadDef(inputTask, StartInputTask, osPriorityNormal, 0, 128);
-  inputTaskHandle = osThreadCreate(osThread(inputTask), NULL);
+	/* USER CODE BEGIN RTOS_QUEUES */
+		/* add queues, ... */
+	/* USER CODE END RTOS_QUEUES */
 
-  /* USER CODE BEGIN RTOS_THREADS */
-	  /* add threads, ... */
-  /* USER CODE END RTOS_THREADS */
+	/* Create the thread(s) */
+	/* definition and creation of screenTask */
+	osThreadDef(screenTask, StartScreenTask, osPriorityLow, 0, 128);
+	screenTaskHandle = osThreadCreate(osThread(screenTask), NULL);
+
+	/* definition and creation of inputTask */
+	osThreadDef(inputTask, StartInputTask, osPriorityNormal, 0, 128);
+	inputTaskHandle = osThreadCreate(osThread(inputTask), NULL);
+
+	/* USER CODE BEGIN RTOS_THREADS */
+		/* add threads, ... */
+	/* USER CODE END RTOS_THREADS */
 
 }
 
@@ -131,19 +143,19 @@ void MX_FREERTOS_Init(void) {
 /* USER CODE END Header_StartScreenTask */
 void StartScreenTask(void const * argument)
 {
-  /* USER CODE BEGIN StartScreenTask */
-	osEvent evt;
+	/* USER CODE BEGIN StartScreenTask */
+	//osEvent evt;
 	/* Infinite loop */
 	for (;;)
 	{
-		evt = osSignalWait(1, osWaitForever);
-		if (evt.status == osEventSignal)
-		{
+		osSignalWait(1, 1000);
+		if (osMutexWait(i2c3_mutexHandle, osWaitForever) == osOK) {
 			screen_draw(&currentData, &scopeData);
+			osMutexRelease(i2c3_mutexHandle);
 		}
 		osDelay(1);
 	}
-  /* USER CODE END StartScreenTask */
+	/* USER CODE END StartScreenTask */
 }
 
 /* USER CODE BEGIN Header_StartInputTask */
@@ -155,15 +167,22 @@ void StartScreenTask(void const * argument)
 /* USER CODE END Header_StartInputTask */
 void StartInputTask(void const * argument)
 {
-  /* USER CODE BEGIN StartInputTask */
+	/* USER CODE BEGIN StartInputTask */
+	osEvent evt;
 	/* Infinite loop */
 	for (;;)
 	{
-		input_read();
-		osSignalSet(screenTaskHandle, 1);
-		osDelay(50);
+		evt = osSignalWait(1, 5000);
+		if (osMutexWait(i2c1_mutexHandle, osWaitForever) == osOK) {
+			input_read();
+			osMutexRelease(i2c1_mutexHandle);
+			
+			map_input();
+			osSignalSet(screenTaskHandle, 1);
+		}
+		
 	}
-  /* USER CODE END StartInputTask */
+	/* USER CODE END StartInputTask */
 }
 
 /* Private application code --------------------------------------------------*/

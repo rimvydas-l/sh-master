@@ -10,11 +10,12 @@ void data_Init(void)
 	
 	//null current data
 	currentData.inputStatus = 0;
-	currentData.outputStatus = 0;
+	currentData.outputStatus = 0x2;
+	setData.outputStatus = 0x2;
 	
 	
-	scopeData.enabledInputs = 0xFFFF;
-	scopeData.enabledOutputs = 0x0000;
+	scopeData.enabledInputs = 0xFF00;
+	scopeData.enabledOutputs = 0x00FF;
 
 	//	scopeData.mapping[0] = 0x1;
 //	scopeData.mapping[1] = 0x2;
@@ -31,6 +32,6 @@ void data_Init(void)
 //	scopeData.mapping[12] = 0x1000;
 //	scopeData.mapping[13] = 0x2000;
 //	scopeData.mapping[14] = 0x4000;
-//	scopeData.mapping[15] = 0x8000;
+	scopeData.mapping[15] = 0x7;
 
 }
