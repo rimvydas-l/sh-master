@@ -1,0 +1,215 @@
+{
+  "uuid": "593404cd7487444d537ca5dd999427df",
+  "path": "Offline/SH_input_2",
+  "name": "SH_input_2",
+  "content": "",
+  "created_at": "2020-05-24 11:24:48",
+  "updated_at": "2020-05-24 19:11:29",
+  "stick": "",
+  "documents": [
+    {
+      "uuid": "a7bf10b0ed5e8b747bb472cbfe8d5f42",
+      "title": "Sheet_1",
+      "description": "",
+      "docType": "1",
+      "master": "",
+      "thumb": "/images/thumb-default.png",
+      "components": {
+        "855281e071454c0284e3b91e3bc8bd70": 1,
+        "778187e874fbf64f58deaef7790b4174": 1,
+        "bd6dea7e723b78fbc58e46a04d81e9cf": 16,
+        "3356da50d111142ee478247612885fe9": 16,
+        "b210af5a1436310a86e8b108e2e5a90b": 20,
+        "e207bcf2ebb73bb9acb192196cb4293f": 1,
+        "a327b111dff94b53a9c94cd7e423cdb0": 1,
+        "2d85c1018cee10caa3f6169b4f59cf0d": 3,
+        "76b786f342454c18b3f838cacc6e4ec1": 1,
+        "c7864e4fa98f458b8d6a451aa3f9392d": 2,
+        "a4b1a4817c07451a8f3d6e245e2eabff": 2
+      },
+      "BOM": [
+        [
+          "Value",
+          "Quantity",
+          "Package",
+          "Components",
+          "CustomPara"
+        ],
+        [
+          "2.2uF",
+          3,
+          "C1206",
+          "C1,C3,C2",
+          {
+            "BOM_Supplier": "LCSC",
+            "BOM_Manufacturer Part": "CL31B225KBHNNNE",
+            "BOM_Manufacturer": "SAMSUNG",
+            "BOM_LCSC Assembly": "Yes",
+            "BOM_Supplier Part": "C50254",
+            "puuid": "b4235c9f870d443994cfe44a496e36ac",
+            "uuid": "2d85c1018cee10caa3f6169b4f59cf0d"
+          }
+        ],
+        [
+          "A2541HWV-2X9P",
+          1,
+          "HDR-TH_18P-P2.54-V-R2-C9-S2.54",
+          "H1",
+          {
+            "BOM_Supplier": "LCSC",
+            "BOM_Supplier Part": "C239349",
+            "BOM_Manufacturer": "Changjiang Connectors",
+            "BOM_Manufacturer Part": "A2541HWV-2x9P",
+            "puuid": "cb7154c34e0747d2b5d54e855d886c86",
+            "uuid": "76b786f342454c18b3f838cacc6e4ec1"
+          }
+        ],
+        [
+          "1.2K",
+          16,
+          "R0603",
+          "R19,R32,R13,R30,R15,R28,R17,R7,R4,R9,R11,R20,R26,R22,R35,R24",
+          {
+            "BOM_Supplier": "LCSC",
+            "BOM_Manufacturer": "UniOhm",
+            "BOM_Manufacturer Part": "0603WAF1201T5E",
+            "BOM_LCSC Assembly": "Yes",
+            "BOM_Supplier Part": "C22765",
+            "puuid": "1bf59dff03ec4233aa077dc7cf0e92a1",
+            "uuid": "3356da50d111142ee478247612885fe9"
+          }
+        ],
+        [
+          "VDG/S-03HG-R",
+          1,
+          "SW-TH_VDG-03HG-R",
+          "DIP1",
+          {
+            "BOM_Supplier": "LCSC",
+            "BOM_Manufacturer": "ReliaPro",
+            "BOM_Manufacturer Part": "VDG/S-03HG-R",
+            "BOM_Supplier Part": "C52648",
+            "puuid": "e748468d81084a998f6a7e8d214d3f93",
+            "uuid": "778187e874fbf64f58deaef7790b4174"
+          }
+        ],
+        [
+          "MCP23017-E/SO",
+          1,
+          "SOIC-28_L18.1-W10.3-P1.27-LS10.3-BL",
+          "U1",
+          {
+            "BOM_Supplier": "LCSC",
+            "BOM_Manufacturer": "MICROCHIP",
+            "BOM_Manufacturer Part": "MCP23017-E/SO",
+            "BOM_Supplier Part": "C47023",
+            "BOM_LCSC Assembly": "Yes",
+            "puuid": "25448c758a6849a891c759ab99d84b68",
+            "uuid": "855281e071454c0284e3b91e3bc8bd70"
+          }
+        ],
+        [
+          "DB128V-5.0-2P",
+          2,
+          "CONN-TH_2P-P5.00_DB128V-5.0-2P",
+          "U21,U22",
+          {
+            "BOM_Supplier": "LCSC",
+            "BOM_Supplier Part": "C395860",
+            "BOM_Manufacturer": "DIBO",
+            "BOM_Manufacturer Part": "DB128V-5.0-2P",
+            "puuid": "396a934badee48e193ced7adf26cb768",
+            "uuid": "a4b1a4817c07451a8f3d6e245e2eabff"
+          }
+        ],
+        [
+          "BL9110-330BPFB",
+          1,
+          "SOT-223_L6.5-W3.5-P2.30-LS7.0-BR",
+          "U19",
+          {
+            "BOM_Supplier": "LCSC",
+            "BOM_Manufacturer": "BL",
+            "BOM_Manufacturer Part": "BL9110-330BPFB",
+            "BOM_Supplier Part": "C169246",
+            "BOM_LCSC Assembly": "Yes",
+            "puuid": "cc1e17e690f74df482b822ccf5767605",
+            "uuid": "a327b111dff94b53a9c94cd7e423cdb0"
+          }
+        ],
+        [
+          "10K",
+          20,
+          "R0603",
+          "R6,R12,R2,R21,R1,R14,R23,R8,R3,R25,R16,R36,R27,R34,R10,R29,R33,R18,R31,R5",
+          {
+            "BOM_Supplier": "LCSC",
+            "BOM_Manufacturer": "UniOhm",
+            "BOM_Manufacturer Part": "0603WAF1002T5E",
+            "BOM_LCSC Assembly": "Yes",
+            "BOM_Supplier Part": "C25804",
+            "puuid": "1bf59dff03ec4233aa077dc7cf0e92a1",
+            "uuid": "b210af5a1436310a86e8b108e2e5a90b"
+          }
+        ],
+        [
+          "EL357N(C)(TA)-G",
+          16,
+          "SOP-4_L3.9-W4.4-P2.54-LS7.0-TL",
+          "U8,U16,U14,U13,U17,U2,U11,U10,U9,U15,U3,U4,U7,U6,U5,U12",
+          {
+            "BOM_Supplier": "LCSC",
+            "BOM_Manufacturer": "EVERLIGHT",
+            "BOM_Manufacturer Part": "EL357N(C)(TA)-G",
+            "BOM_Supplier Part": "C29981",
+            "BOM_LCSC Assembly": "Yes",
+            "puuid": "b2e30c05bcde4c9ea462d2949d6700bd",
+            "uuid": "bd6dea7e723b78fbc58e46a04d81e9cf"
+          }
+        ],
+        [
+          "DB128V-5.0-8P",
+          2,
+          "CONN-TH_8P-P5.00_DB128V-5.0-8P",
+          "U20,U18",
+          {
+            "BOM_Supplier": "LCSC",
+            "BOM_Supplier Part": "C395863",
+            "BOM_Manufacturer": "DIBO",
+            "BOM_Manufacturer Part": "DB128V-5.0-8P",
+            "puuid": "80c6620da9194ab2908fa5cae9db6284",
+            "uuid": "c7864e4fa98f458b8d6a451aa3f9392d"
+          }
+        ],
+        [
+          "SS36-E3/57T",
+          1,
+          "SMC_L7.1-W6.2-LS8.1-FD",
+          "D1",
+          {
+            "BOM_Supplier": "LCSC",
+            "BOM_Manufacturer Part": "SS36-E3/57T",
+            "BOM_LCSC Assembly": "Yes",
+            "BOM_Manufacturer": "VISHAY",
+            "BOM_Supplier Part": "C35722",
+            "puuid": "e4f3261ce51e4e24837af00e485f818c",
+            "uuid": "e207bcf2ebb73bb9acb192196cb4293f"
+          }
+        ]
+      ],
+      "updateTime": 1590336689,
+      "createTime": 1590309065,
+      "histories": [],
+      "created_at": "2020-05-24 11:31:05",
+      "updated_at": "2020-05-24 19:11:29"
+    }
+  ],
+  "sort": [
+    "a7bf10b0ed5e8b747bb472cbfe8d5f42",
+    "7ebbd3da8003d29d476213090dbf1d8a"
+  ],
+  "title": "SH_input_2",
+  "foldername": "SH_input_2",
+  "schfilename": "SH_input_2.json",
+  "schfilemtime": 1590336689416
+}
